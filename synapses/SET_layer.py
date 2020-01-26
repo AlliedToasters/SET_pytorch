@@ -258,5 +258,5 @@ class SETLayer(nn.Module):
     def forward(self, x):
         k = x[:, self.inds]
         k = k * self.weight
-        z = scatter_add(k, self.inds_out)
+        z = scatter_add(k, self.inds_out, dim_size=self.outdim)
         return z + self.bias
